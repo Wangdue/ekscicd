@@ -1,0 +1,2 @@
+ll
+sudo su

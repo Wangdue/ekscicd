@@ -1,0 +1,30 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-cluster-testbed
+  region: ap-northeast-3
+
+vpc:
+  id: "vpc-072496d0130f30ed8"
+  securityGroup: sg-074e5151e0ab4a933
+  subnets:
+    public:
+      ap-northeast-2a:
+        id: "subnet-0f1b59f6df555641e"
+      ap-northeast-2c:
+        id: "subnet-090b7deb78fd1a0bc"
+
+managedNodeGroups:
+  - name: eks-cluster-nodegroup
+    minSize: 2
+    maxSize: 4
+    instanceType: t3.small
+    desiredCapacity: 2
+    volumeSize: 20
+    subnets:
+      -  subnet-0f1b59f6df555641e
+      -  subnet-090b7deb78fd1a0bc
+    privateNetworking: true
+    ssh:
+      enableSsm: true
