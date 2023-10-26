@@ -1,2 +1,0 @@
-# ekscicd
-ekscicd
